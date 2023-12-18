@@ -1,3 +1,8 @@
+# Modules
 /node_modules
 
+# Config info 
 /config
+
+# Route Testing
+/requests 
