@@ -24,3 +24,5 @@ const UserSchema = new mongoose.Schema({
 })
 
 module.exports = mongoose.model("User", UserSchema)
+
+// Need to add more and store properly
