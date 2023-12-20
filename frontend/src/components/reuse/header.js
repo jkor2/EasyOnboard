@@ -40,18 +40,30 @@ function Header() {
               </Offcanvas.Title>
             </Offcanvas.Header>
             <Offcanvas.Body className="text-light bg-custom-css">
-              <Nav className="justify-content-end flex-grow-1 pe-3 text-light">
+              <Nav className="justify-content-end flex-grow-1 pe-3 text-light gap-3">
                 <Nav.Link href="#action1" className="text-light">
-                  Home
+                  Overview
                 </Nav.Link>
                 <Nav.Link href="#action2" className="text-light">
-                  Link
+                  Full Breakdown
+                </Nav.Link>
+                <Nav.Link href="#action2" className="text-light">
+                  Contacts
+                </Nav.Link>
+                <Nav.Link href="#action2" className="text-light">
+                  By State
+                </Nav.Link>
+                <Nav.Link href="#action2" className="text-light">
+                  Upload
+                </Nav.Link>
+                <Nav.Link href="#action2" className="text-light">
+                  Contract Generator
                 </Nav.Link>
               </Nav>
               <Form className="d-flex text-light">
                 <Form.Control
                   type="search"
-                  placeholder="Search"
+                  placeholder="Employee Search"
                   className="me-2"
                   aria-label="Search"
                 />
