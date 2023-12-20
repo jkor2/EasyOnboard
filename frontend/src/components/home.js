@@ -1,19 +1,13 @@
 import React from "react";
 import Container from "react-bootstrap/Container";
 import Table from "react-bootstrap/Table";
-import ButtonGroup from 'react-bootstrap/ButtonGroup';
-import Dropdown from 'react-bootstrap/Dropdown';
-import DropdownButton from 'react-bootstrap/DropdownButton';
-import SplitButton from 'react-bootstrap/SplitButton';
 import Header from "./reuse/header";
 import "../App.css";
+import RenderStatusButton from "./reuse/statusChangeButton"; // For changing the status of employee 
 
 function Home() {
   // Employee Data State
   const [employeeData, setEmployeeData] = React.useState(null);
-
-
-
 
 
   React.useEffect(() => {
@@ -39,30 +33,12 @@ function Home() {
           <td style={{ minWidth: "150px" }}>{curr.email}</td>
           <td style={{ minWidth: "150px" }}>{curr.phone_number}</td>
           <td style={{ minWidth: "150px" }}>{curr.position}</td>
-          <td style={{ minWidth: "150px" }}>{renderButton(curr.training)}</td>
-          <td style={{ minWidth: "150px" }}>{renderButton(curr.schedule)}</td>
+          <td style={{ minWidth: "150px" }}>{RenderStatusButton(curr.training, "training")}</td>
+          <td style={{ minWidth: "150px" }}>{RenderStatusButton(curr.schedule, "schedule")}</td>
         </tr>
       );
     });
   };
-
-  const renderButton = (status) => {
-    return (
-        <Dropdown>
-        <Dropdown.Toggle variant={status ? "success" : "danger"} id="dropdown-basic">
-          {status ? "Complete" : "Not-Complete"}
-        </Dropdown.Toggle>
-  
-        <Dropdown.Menu>
-        {status ? <Dropdown.Item href="#/action-1">False</Dropdown.Item>
-          :
-          <Dropdown.Item href="#/action-2">True</Dropdown.Item>          
-          }
-        </Dropdown.Menu>
-      </Dropdown>
-    )
-  } 
-
 
   return (
     <>
