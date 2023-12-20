@@ -12,7 +12,7 @@ app.use(express.json({ extended: false }))
 
 // Define Routes
 app.use('/', require('./routes/index'))
-app.use('/api/user', require('./routes/employee'))
+app.use('/api', require('./routes/employee'))
 
 const PORT = 5000
 
