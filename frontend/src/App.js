@@ -1,6 +1,9 @@
 import logo from './logo.svg';
 import './App.css';
 import React from "react"
+import { Routes, Route } from 'react-router-dom';
+import Home from './components/home'; // Home Page 
+
 
 
 function App() {
@@ -16,7 +19,9 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Test</h1>
+      <Routes>
+        <Route index element={<Home/>}/>
+      </Routes>
     </div>
   );
 }
