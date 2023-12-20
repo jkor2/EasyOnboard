@@ -42,7 +42,7 @@ function Home() {
 
   return (
     <>
-      <Header />
+      {Header(1)}
       <Container fluid className="mb-3">
         <h1>Employee Overview</h1>
       </Container>

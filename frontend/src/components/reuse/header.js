@@ -7,7 +7,7 @@ import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import Offcanvas from "react-bootstrap/Offcanvas";
 
-function Header() {
+function Header(location) {
   /**
    * Reusable component for Header Nav Bar
    */
@@ -41,7 +41,7 @@ function Header() {
             </Offcanvas.Header>
             <Offcanvas.Body className="text-light bg-custom-css">
               <Nav className="justify-content-end flex-grow-1 pe-3 text-light gap-3">
-                <Nav.Link href="#action1" className="text-light">
+                <Nav.Link href="#action1" className={location == 1 ? "text-dark border-bottom border-dark rounded pd-2" : "text-light"}>
                   Overview
                 </Nav.Link>
                 <Nav.Link href="#action2" className="text-light">
