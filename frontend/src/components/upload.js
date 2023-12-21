@@ -9,7 +9,26 @@ import Container from "react-bootstrap/esm/Container";
 
 function Upload() {
 
+    const [newEmployee, setNewEmployee] = React.useState({
+      fname: "",
+      lname: "",
+      location: "",
+      position: "",
+      email: "",
+      phone_number: ""
+    })
 
+    const handleChange = (event) => {
+      const {name, value} = event.target
+      
+      setNewEmployee((prev) => ({
+        ...prev,
+        [name]: value
+      }))
+    }
+
+
+    console.log(newEmployee)
 
     return (
       <>
@@ -22,7 +41,7 @@ function Upload() {
           First Name
         </Form.Label>
         <Col sm={10}>
-          <Form.Control type="email" placeholder="First Name" />
+          <Form.Control type="text" name="fname" placeholder="First Name" onChange={handleChange}/>
         </Col>
       </Form.Group>
       <Form.Group as={Row} className="mb-3 form-control-sm" controlId="formHorizontalEmail">
@@ -30,7 +49,7 @@ function Upload() {
           Last Name
         </Form.Label>
         <Col sm={10}>
-          <Form.Control type="email" placeholder="Last Name" />
+          <Form.Control type="text" name="lname" placeholder="Last Name" onChange={handleChange} />
         </Col>
       </Form.Group>
       <Form.Group as={Row} className="mb-3 form-control-sm" controlId="formHorizontalEmail">
@@ -38,7 +57,7 @@ function Upload() {
           Location
         </Form.Label>
         <Col sm={10}>
-          <Form.Control type="email" placeholder="City, State" />
+          <Form.Control type="text" name="location" placeholder="City, State" onChange={handleChange} />
         </Col>
       </Form.Group>
       <Form.Group as={Row} className="mb-3 form-control-sm" controlId="formHorizontalEmail">
@@ -46,7 +65,7 @@ function Upload() {
             Position
         </Form.Label>
         <Col sm={10}>
-          <Form.Control type="email" placeholder="Position" />
+          <Form.Control type="text" name="position" placeholder="Position" onChange={handleChange}/>
         </Col>
       </Form.Group>
       <Form.Group as={Row} className="mb-3 form-control-sm" controlId="formHorizontalEmail">
@@ -54,15 +73,15 @@ function Upload() {
           Email
         </Form.Label>
         <Col sm={10}>
-          <Form.Control type="email" placeholder="Email" />
+          <Form.Control type="email" name="email" placeholder="Email" onChange={handleChange} />
         </Col>
       </Form.Group>
       <Form.Group as={Row} className="mb-3 form-control-sm" controlId="formHorizontalEmail">
         <Form.Label column sm={2}>
-          Phone Number
+          Cellphone
         </Form.Label>
         <Col sm={10}>
-          <Form.Control type="email" placeholder="Phone Number" />
+          <Form.Control type="text" name="phone_number" placeholder="Phone Number" onChange={handleChange}/>
         </Col>
       </Form.Group>
  
