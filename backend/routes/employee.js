@@ -11,24 +11,42 @@ router.post("/users/individual", async (req, res) => {
   console.log(user);
 
   try {
-    if (employeeExisist==null) {
+    if (employeeExisist == null) {
       // If new employee is not in database
 
-      // Clean user data entries
-      const nuser = new User({
-        fname: req.body.fname,
-        lname: req.body.lname,
-        email: req.body.email,
-        phone_number: req.body.phone_number,
-        position: req.body.position,
-        location: req.body.location,
-      });
+      if (
+        req.body.fname == "" ||
+        req.body.lname == "" ||
+        req.body.email == "" ||
+        req.body.phone_number == "" ||
+        req.body.position == "" ||
+        req.body.location == ""
+      ) {
+        res.json({
+          status: 406, // Need to find correct code
+          response: `Hold on a second! Make sure all fields are filled out.`,
+        });
+      } else {
+        // Clean user data entries
+        const nuser = new User({
+          fname: req.body.fname,
+          lname: req.body.lname,
+          email: req.body.email,
+          phone_number: req.body.phone_number,
+          position: req.body.position,
+          location: req.body.location,
+          whenIWork: req.body.whenIWork,
+          newTek: req.body.newTek,
+          training: req.body.training,
+          schedule: req.body.schedule,
+        });
 
-      await nuser.save();
-      res.json({
-        status: 200,
-        response: `Success! ${req.body.fname} has been added.`,
-      });
+        await nuser.save();
+        res.json({
+          status: 200,
+          response: `Success! ${req.body.fname} has been added.`,
+        });
+      }
     } else {
       // Response if employee is in DB
       res.json({
