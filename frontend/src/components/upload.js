@@ -6,8 +6,17 @@ import Row from 'react-bootstrap/Row';
 import Header from "./reuse/header";
 import "../App.css";
 import Container from "react-bootstrap/esm/Container";
+import { useNavigate } from "react-router-dom";
+
 
 function Upload() {
+    /**
+     * Upload component
+     * Can upload individual employees and based on a CSV
+     */
+
+    const navigate = useNavigate();
+
 
     const [newEmployee, setNewEmployee] = React.useState({
       fname: "",
