@@ -5,14 +5,13 @@ const User = require("../models/User");
 // @route   POST /api/employee
 // @desc    Create new user
 
-router.post("/api/users/individual", async (req, res) => {
-  const employeeExisist = User.findOne({ email: req.body.email });
-
+router.post("/users/individual", async (req, res) => {
+  const employeeExisist = await User.findOne({ email: req.body.email });
   const user = req.body;
   console.log(user);
 
   try {
-    if (!employeeExisist) {
+    if (employeeExisist==null) {
       // If new employee is not in database
 
       // Clean user data entries
@@ -48,7 +47,6 @@ router.post("/api/users/individual", async (req, res) => {
 
 router.get("/users", async (req, res) => {
   data = await User.find({});
-  console.log(data);
   res.json({ data: data });
 });
 
