@@ -18,6 +18,8 @@ function Upload() {
       phone_number: ""
     })
 
+    const [resStatus, setResStatus] = React.useState(null)
+
     const handleChange = (event) => {
       const {name, value} = event.target
       
@@ -26,6 +28,21 @@ function Upload() {
         [name]: value
       }))
     }
+
+    const handleIndividualUpload = () => {
+      fetch("/api/users/individual", {
+        method: "POST",
+        body: JSON.stringify(newEmployee),
+      })
+        .then((res) => res.json())
+        .then((res) => {
+          if (res.status === 200) {
+            navigate("/");
+          } else {
+            alert("Account already exists!");
+          }
+        });
+    } 
 
 
     console.log(newEmployee)
