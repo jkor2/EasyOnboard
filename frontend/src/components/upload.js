@@ -7,6 +7,9 @@ import Header from "./reuse/header";
 import "../App.css";
 import Container from "react-bootstrap/esm/Container";
 import { useNavigate } from "react-router-dom";
+import Alert from 'react-bootstrap/Alert';
+import Footer from "./reuse/footer";
+
 
 
 function Upload() {
@@ -51,7 +54,7 @@ function Upload() {
     const [switchValueSchedule, setSwitchValueSchedule] = React.useState(false);
 
     const handleSwitchChangeSchedule = (event) => {
-      console.log(switchValueSchedule)
+      setSwitchValueSchedule(event.target.checked)
       setNewEmployee((prev) => ({
         ...prev,
         "schedule": event.target.checked
@@ -73,9 +76,10 @@ function Upload() {
 
     })
 
-    const [resStatus, setResStatus] = React.useState(null)
+    const [resStatus, setResStatus] = React.useState(false)
 
     const handleChange = (event) => {
+      setResStatus(false)
       const {name, value} = event.target
       
       setNewEmployee((prev) => ({
@@ -96,7 +100,8 @@ function Upload() {
         .then((res) => res.json())
         .then((res) => {
           if (res.status === 200) {
-            alert(res.response);
+            setResStatus(res.response)
+            setTimeout(window.location.reload(), 10000)
           } else {
             alert("Account already exists!");
           }
@@ -108,10 +113,17 @@ function Upload() {
 
     return (
       <>
+          <div style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
+
         {Header(5)}
         <Container className="mb-5"><h1>Employee Upload</h1></Container>
-        <span className="text-danger">*</span> <span>Required Fields</span>
-
+        <div><span className="text-danger">*</span> <span>Required Fields</span></div>
+        <Container className=" mt-3 d-flex w-100 justify-content-center">
+        {resStatus ? <Alert key="success" variant="success" className="d-flex w-50 justify-content-center">{resStatus}</Alert> : ""}
+        </Container>
+        
+        
+        
         <Container >
         <Form className="mt-3" method="POST" onSubmit={handleIndividualUpload}>
         <Form.Group as={Row} className="mb-3 form-control-sm" controlId="formHorizontalEmail">
@@ -232,6 +244,10 @@ function Upload() {
       </form>
     </div>
 
+
+      <Footer/>
+
+</div>
       </>
     );
   }

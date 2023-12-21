@@ -37,7 +37,7 @@ function Header(location) {
               <Offcanvas.Title
                 id={`offcanvasNavbarDropdown-expand-sm text-light`}
               >
-                Offcanvas
+                EzOnboard
               </Offcanvas.Title>
             </Offcanvas.Header>
             <Offcanvas.Body className="text-light bg-custom-css">
