@@ -49,12 +49,15 @@ function Header(location) {
                   Full Breakdown
                 </Nav.Link>
                 <Nav.Link href="#action2" className="text-light">
-                  Contacts
+                  Quick Contacts
                 </Nav.Link>
                 <Nav.Link href="#action2" className="text-light">
-                  By State
+                  Employee by State
                 </Nav.Link>
-                <Nav.Link href="/upload" className={location == 5 ? "text-dark border-bottom border-dark rounded pd-2" : "text-light"}>
+                <Nav.Link href="/pipeline" className={location == 5 ? "text-dark border-bottom border-dark rounded pd-2" : "text-light"}>
+                  Applicant Pipeline
+                </Nav.Link>
+                <Nav.Link href="/upload" className={location == 6 ? "text-dark border-bottom border-dark rounded pd-2" : "text-light"}>
                   Upload
                 </Nav.Link>
                 <Nav.Link href="#action2" className="text-light">

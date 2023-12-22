@@ -4,6 +4,7 @@ import React from "react"
 import { Routes, Route } from 'react-router-dom';
 import Home from './components/home'; // Home Page 
 import Upload from './components/upload'; // Data Upload
+import EmployeePipeline from './components/employeePipeline';
 
 function App() {
 
@@ -21,6 +22,7 @@ function App() {
       <Routes>
         <Route index element={<Home/>}/>
         <Route path="/upload" element={<Upload/>}></Route>
+        <Route path="/pipeline" element={<EmployeePipeline/>}></Route>
 
       </Routes>
     </div>

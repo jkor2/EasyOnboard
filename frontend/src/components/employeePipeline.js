@@ -7,7 +7,8 @@ import RenderStatusButton from "./reuse/statusChangeButton"; // For changing the
 import Footer from "./reuse/footer";
 import Spinner from 'react-bootstrap/Spinner';
 
-function Home() {
+
+function EmployeePipeline() {
   // Employee Data State
   const [employeeData, setEmployeeData] = React.useState(null);
 
@@ -27,35 +28,35 @@ function Home() {
 
   const renderEmployees = (data) => {
     return data.map((curr) => {
-      if (curr.hired){
-        return (
-          <tr>
-            <td style={{ minWidth: "150px" }}>{curr.fname}</td>
-            <td style={{ minWidth: "150px" }}>{curr.lname}</td>
-            <td style={{ minWidth: "150px" }}>{curr.location}</td>
-            <td style={{ minWidth: "150px" }}>{curr.email}</td>
-            <td style={{ minWidth: "150px" }}>{curr.phone_number}</td>
-            <td style={{ minWidth: "150px" }}>{curr.position}</td>
-            <td style={{ minWidth: "150px" }}>{RenderStatusButton(curr.training, "training")}</td>
-            <td style={{ minWidth: "150px" }}>{RenderStatusButton(curr.schedule, "schedule")}</td>
-          </tr>
-        );
-      }
+        if (!curr.hired){
+      return (
+        <tr>
+          <td style={{ minWidth: "150px" }}>{curr.fname}</td>
+          <td style={{ minWidth: "150px" }}>{curr.lname}</td>
+          <td style={{ minWidth: "150px" }}>{curr.location}</td>
+          <td style={{ minWidth: "150px" }}>{curr.email}</td>
+          <td style={{ minWidth: "150px" }}>{curr.phone_number}</td>
+          <td style={{ minWidth: "150px" }}>{curr.position}</td>
+          <td style={{ minWidth: "150px" }}>{RenderStatusButton(curr.hired, "hired")}</td>
+          <td style={{ minWidth: "150px" }}>{RenderStatusButton(curr.interviewFirst, "interviewFirst")}</td>
+          <td style={{ minWidth: "150px" }}>{RenderStatusButton(curr.interviewSecond, "interviewSecond")}</td>
 
+        </tr>
+      )}
     });
   };
 
   return (
     <div style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
-    {Header(1)}
+    {Header(5)}
     <Container fluid className="mb-3">
-      <h1>Employee Overview</h1>
+      <h1>Applicant Pipeline</h1>
     </Container>
 
-    <Container fluid>
+    <Container fluid >
       {employeeData ? (
         <Table responsive>
-          <thead>
+          <thead >
             <tr>
               <th>First</th>
               <th>Last</th>
@@ -63,14 +64,19 @@ function Home() {
               <th>Email</th>
               <th>Cell</th>
               <th>Postion</th>
-              <th>Training</th>
-              <th>Schedule</th>
+              <th>Hired</th>
+              <th>Round One</th>
+              <th>Round Two</th>
             </tr>
           </thead>
-          <tbody>{renderEmployees(employeeData.data)}</tbody>
+          <tbody >
+            {renderEmployees(employeeData.data)}
+            
+            </tbody>
         </Table>
       ) : (
         <Spinner animation="border" variant="info" />
+
       )}
     </Container>
 
@@ -81,4 +87,4 @@ function Home() {
 );
 }
 
-export default Home;
+export default EmployeePipeline;

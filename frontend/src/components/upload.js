@@ -24,46 +24,9 @@ function Upload() {
 
 
     const [switchValueWiW, setSwitchValueWiW] = React.useState(false);
-
-    const handleSwitchChangeNT = (event) => {
-      setSwitchValueNT(event.target.checked);
-      setNewEmployee((prev) => ({
-        ...prev,
-        "newTek": event.target.checked
-      }))
-      
-    };
     const [switchValueNT, setSwitchValueNT] = React.useState(false);
-
-    const handleSwitchChangeWiW = (event) => {
-      setSwitchValueWiW(event.target.checked);
-      setNewEmployee((prev) => ({
-        ...prev,
-        "whenIWork": event.target.checked
-      }))
-      
-    };
     const [switchValueTrain, setSwitchValueTrain] = React.useState(false);
-
-    const handleSwitchChangeTrain = (event) => {
-      setSwitchValueTrain(event.target.checked);
-      setNewEmployee((prev) => ({
-        ...prev,
-        "training": event.target.checked
-      }))
-      
-    };
     const [switchValueSchedule, setSwitchValueSchedule] = React.useState(false);
-
-    const handleSwitchChangeSchedule = (event) => {
-      setSwitchValueSchedule(event.target.checked)
-      setNewEmployee((prev) => ({
-        ...prev,
-        "schedule": event.target.checked
-      }))
-
-    };
-
     const [newEmployee, setNewEmployee] = React.useState({
       fname: "",
       lname: "",
@@ -77,8 +40,48 @@ function Upload() {
       schedule: false
 
     })
-
+    const [csvUploadData, setCsvUploadData] = React.useState(false)
     const [resStatus, setResStatus] = React.useState(false)
+    const [show, setShow] = React.useState(false); // Button State
+
+
+    const handleSwitchChangeNT = (event) => {
+      setSwitchValueNT(event.target.checked);
+      setNewEmployee((prev) => ({
+        ...prev,
+        "newTek": event.target.checked
+      }))
+      
+    };
+
+    const handleSwitchChangeWiW = (event) => {
+      setSwitchValueWiW(event.target.checked);
+      setNewEmployee((prev) => ({
+        ...prev,
+        "whenIWork": event.target.checked
+      }))
+      
+    };
+
+    const handleSwitchChangeTrain = (event) => {
+      setSwitchValueTrain(event.target.checked);
+      setNewEmployee((prev) => ({
+        ...prev,
+        "training": event.target.checked
+      }))
+      
+    };
+
+    const handleSwitchChangeSchedule = (event) => {
+      setSwitchValueSchedule(event.target.checked)
+      setNewEmployee((prev) => ({
+        ...prev,
+        "schedule": event.target.checked
+      }))
+
+    };
+
+
 
     const handleChange = (event) => {
       setResStatus(false)
@@ -113,11 +116,11 @@ function Upload() {
 
     const downloadTeamplateCSV = () => {
       let csvFileData = [  
-        ['Alan','Walker', "Bristol CT", "Field Manager", "awalker@ezonboard.com", "123-456-7891", "true", "false", "true", "false" ],  
+        ['Alan','Walker', "Bristol CT", "Field Manager", "awalker@ezonboard.com", "123-456-7891", "true", "false", "true", "false", "false" ],  
           
      ];  
 
-      let csv = 'fname,lname,location,position,email,phone_number,whenIWork,newTek,training,schedule\n';  
+      let csv = 'fname,lname,location,position,email,phone_number,whenIWork,newTek,training,schedule,hired\n';  
 
       csvFileData.forEach(function(row) {  
         csv += row.join(',');  
@@ -135,19 +138,18 @@ function Upload() {
 
     }
 
-    const [csvUploadData, setCsvUploadData] = React.useState(false)
 
     const handleCSVUpload = (e) => {
       const file = e.target.files[0]
       Papa.parse(file, {
         header: true, 
         complete: (res) => {
+          res.data.pop()
           setCsvUploadData(res.data)
           console.log(csvUploadData)
         }
       })
 
-console.log(csvUploadData)
     }
 
     const renderUploadedCSVData = () => {
@@ -185,7 +187,7 @@ const handleUploadSuccess = (event) => {
     .then((res) => res.json())
     .then((res) => {
       if (res.status === 200) {
-        setResStatus(res.response)
+        console.log(res.response)
         setTimeout(window.location.reload(), 10000)
       } else {
         alert("Account already exists!");
@@ -201,7 +203,7 @@ const handleUploadSuccess = (event) => {
       <>
           <div style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
 
-        {Header(5)}
+        {Header(6)}
         <Container className="mb-5"><h1>Employee Upload</h1></Container>
         <div><span className="text-danger">*</span> <span>Required Fields</span></div>
         <Container className=" mt-3 d-flex w-100 justify-content-center">
@@ -322,6 +324,32 @@ const handleUploadSuccess = (event) => {
     </Form>
     </Container>
     <Container className="mt-5"><h3>Group Upload</h3></Container>
+    <Container className="mt-3" >
+
+    <Alert show={show} variant="info" className="custom-alert" >
+        <Alert.Heading>Group Upload Tutorial</Alert.Heading>
+        <ol>
+  <li>Download CSV template by clicking the gray "Download CSV button"</li>
+  <li>Take a look at the default values pre-populated</li>
+  <li>Remove those and replace with your data</li>
+  <li>Ensure there are no special characters using "Find and Replace"</li>
+  <li>Match the Boolean columns to your employee/applicant status</li>
+  <li>Scroll to the bottom of the page and select the green upload button</li>
+</ol>
+
+<p>Done!</p>
+        <hr />
+        <div className="d-flex justify-content-end">
+          <Button onClick={() => setShow(false)} variant="outline-primary">
+            Close Tutorial
+          </Button>
+        </div>
+      </Alert>
+
+      {!show && <Button onClick={() => setShow(true)} variant="outline-primary" className="mb-4">How To</Button>}
+
+
+    </Container>
     <Container>
     <Button variant="secondary btn-sm" onClick={downloadTeamplateCSV}>Download CSV Teamplate</Button>{' '}
     </Container>    
