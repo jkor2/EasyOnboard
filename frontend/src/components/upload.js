@@ -9,6 +9,8 @@ import Container from "react-bootstrap/esm/Container";
 import { useNavigate } from "react-router-dom";
 import Alert from 'react-bootstrap/Alert';
 import Footer from "./reuse/footer";
+import Papa from "papaparse"
+import Table from "react-bootstrap/Table";
 
 
 
@@ -115,7 +117,7 @@ function Upload() {
           
      ];  
 
-      let csv = 'fame,lname,location,position,email,phone_number,whenIWork,newTek,training,schedule\n';  
+      let csv = 'fname,lname,location,position,email,phone_number,whenIWork,newTek,training,schedule\n';  
 
       csvFileData.forEach(function(row) {  
         csv += row.join(',');  
@@ -133,8 +135,68 @@ function Upload() {
 
     }
 
-    console.log(newEmployee)
+    const [csvUploadData, setCsvUploadData] = React.useState(false)
 
+    const handleCSVUpload = (e) => {
+      const file = e.target.files[0]
+      Papa.parse(file, {
+        header: true, 
+        complete: (res) => {
+          setCsvUploadData(res.data)
+          console.log(csvUploadData)
+        }
+      })
+
+console.log(csvUploadData)
+    }
+
+    const renderUploadedCSVData = () => {
+      console.log("rendering....")
+      return csvUploadData.map((curr) => {
+        return (
+          <tr>
+            <td style={{ minWidth: "150px" }}>{curr.fname}</td>
+            <td style={{ minWidth: "150px" }}>{curr.lname}</td>
+            <td style={{ minWidth: "150px" }}>{curr.location}</td>
+            <td style={{ minWidth: "150px" }}>{curr.email}</td>
+            <td style={{ minWidth: "150px" }}>{curr.phone_number}</td>
+            <td style={{ minWidth: "150px" }}>{curr.position}</td>
+          </tr>
+        );
+      });
+    }
+
+
+const handleUplaodCancel = () => {
+  window.location.reload()
+}
+
+const handleUploadSuccess = (event) => {
+
+
+  event.preventDefault()
+  fetch("/api/users/group", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(csvUploadData),
+  })
+    .then((res) => res.json())
+    .then((res) => {
+      if (res.status === 200) {
+        setResStatus(res.response)
+        setTimeout(window.location.reload(), 10000)
+      } else {
+        alert("Account already exists!");
+      }
+    });
+
+
+  
+}
+
+    console.log(csvUploadData)
     return (
       <>
           <div style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
@@ -266,10 +328,34 @@ function Upload() {
     <div style={{ textAlign: "center" }}>
 
       <form>
-        <input type={"file"} accept={".csv"} className="mt-5"/>
+        <input type={"file"} accept={".csv"} className="mt-5" onChange={handleCSVUpload}/>
       </form>
     </div>
 
+      {csvUploadData ? 
+      <Container>
+      <Table responsive className=" bg-dark width-50">
+      <thead>
+        <tr>
+          <th>First</th>
+          <th>Last</th>
+          <th>Location</th>
+          <th>Email</th>
+          <th>Cell</th>
+          <th>Postion</th>
+        </tr>
+      </thead>
+      <tbody>{renderUploadedCSVData()}</tbody>
+    </Table>
+      
+    <Container  className=" mt-3 d-flex w-100 gap-5 justify-content-center">
+    <Button variant="danger  btn-lg" onClick={handleUplaodCancel}>Cancel Upload</Button>{' '}
+    <Button variant="success btn-lg" onClick={handleUploadSuccess}>Upload to DB</Button>
+
+
+      </Container>
+    </Container>
+      : ""}
 
       <Footer/>
 
