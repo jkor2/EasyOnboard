@@ -109,6 +109,30 @@ function Upload() {
     } 
 
 
+    const downloadTeamplateCSV = () => {
+      let csvFileData = [  
+        ['Alan','Walker', "Bristol CT", "Field Manager", "awalker@ezonboard.com", "123-456-7891", "true", "false", "true", "false" ],  
+          
+     ];  
+
+      let csv = 'fame,lname,location,position,email,phone_number,whenIWork,newTek,training,schedule\n';  
+
+      csvFileData.forEach(function(row) {  
+        csv += row.join(',');  
+        csv += "\n";  
+  });
+  
+  
+  var hiddenElement = document.createElement('a');  
+  hiddenElement.href = 'data:text/csv;charset=utf-8,' + encodeURI(csv);  
+  hiddenElement.target = '_blank';  
+    
+  //provide the name for the CSV file to be downloaded  
+  hiddenElement.download = 'csv_format_group_upload.csv';  
+  hiddenElement.click();  
+
+    }
+
     console.log(newEmployee)
 
     return (
@@ -230,16 +254,18 @@ function Upload() {
 
       <Form.Group as={Row} className="mb-3 form-control-sm">
         <Col>
-          <Button type="submit" className="btn-lg width-50">Add Employee to DB</Button>
+          <Button type="submit" className="btn-lg width-50 bg-custom-css">Add Employee to DB</Button>
         </Col>
       </Form.Group>
     </Form>
     </Container>
     <Container className="mt-5"><h3>Group Upload</h3></Container>
-        
+    <Container>
+    <Button variant="secondary btn-sm" onClick={downloadTeamplateCSV}>Download CSV Teamplate</Button>{' '}
+    </Container>    
     <div style={{ textAlign: "center" }}>
+
       <form>
-        <div>***Under Constrcution***</div>
         <input type={"file"} accept={".csv"} className="mt-5"/>
       </form>
     </div>
