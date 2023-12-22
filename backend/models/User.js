@@ -19,7 +19,7 @@ const UserSchema = new mongoose.Schema({
     eDate: {type: Date, default: null},
     training: {type: Boolean, default: false},
     notes: {type: String, default: null},
-    hired: {type: Boolean, default: false},
+    hired: {type: Boolean, default: true},
     preferedLocations: {type: Array, default: []}
 })
 
