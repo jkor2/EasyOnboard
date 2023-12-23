@@ -11,8 +11,7 @@ import Alert from "react-bootstrap/Alert";
 import Footer from "./reuse/footer";
 import Papa from "papaparse";
 import Table from "react-bootstrap/Table";
-import Spinner from 'react-bootstrap/Spinner';
-
+import Spinner from "react-bootstrap/Spinner";
 
 function Upload() {
   /**
@@ -118,9 +117,9 @@ function Upload() {
         "true",
         "false",
         "false",
-        "25",	
+        "25",
         "false",
-        "false"
+        "false",
       ],
     ];
 
@@ -166,8 +165,6 @@ function Upload() {
           <td style={{ minWidth: "150px" }}>{curr.position}</td>
           <td style={{ minWidth: "150px" }}>{curr.rate}</td>
           <td style={{ minWidth: "150px" }}>{curr.hired}</td>
-
-
         </tr>
       );
     });
@@ -177,12 +174,11 @@ function Upload() {
     window.location.reload();
   };
 
-  const [spinnerStatus, setSpinnerStatus] = React.useState(false)
-
+  const [spinnerStatus, setSpinnerStatus] = React.useState(false);
 
   const handleUploadSuccess = (event) => {
     event.preventDefault();
-    setSpinnerStatus(true)
+    setSpinnerStatus(true);
 
     fetch("/api/users/group", {
       method: "POST",
@@ -195,10 +191,10 @@ function Upload() {
       .then((res) => {
         if (res.status === 200) {
           console.log(res.response);
-          setResStatus(false)
+          setResStatus(false);
           setTimeout(window.location.reload(), 10000);
         } else {
-          setResStatus(false)
+          setResStatus(false);
           alert("Account already exists!");
         }
       });
@@ -470,8 +466,6 @@ function Upload() {
                   <th>Postion</th>
                   <th>Rate</th>
                   <th>Hired</th>
-
-
                 </tr>
               </thead>
               <tbody>{renderUploadedCSVData()}</tbody>
@@ -484,7 +478,11 @@ function Upload() {
               <Button variant="success btn-lg" onClick={handleUploadSuccess}>
                 Upload to DB
               </Button>
-              {spinnerStatus ? <Spinner animation="border" variant="info" /> : ""}
+              {spinnerStatus ? (
+                <Spinner animation="border" variant="info" />
+              ) : (
+                ""
+              )}
             </Container>
           </Container>
         ) : (
