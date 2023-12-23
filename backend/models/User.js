@@ -20,7 +20,10 @@ const UserSchema = new mongoose.Schema({
     training: {type: Boolean, default: false},
     notes: {type: String, default: null},
     hired: {type: Boolean, default: true},
-    preferedLocations: {type: Array, default: []}
+    preferedLocations: {type: Array, default: []},
+    backgroundCheck: {type: Boolean, default: false},
+    travelWillingness: {type: Boolean, default: false},
+    
 })
 
 module.exports = mongoose.model("User", UserSchema)

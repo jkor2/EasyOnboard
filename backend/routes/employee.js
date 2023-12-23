@@ -92,7 +92,7 @@ router.post("/users/group", async (req, res) => {
       } else {
         try {
           if (user[i].fname == "") {
-            continue
+            continue;
           }
           console.log(4, user[i].fname);
           const nuser = new User({
@@ -106,7 +106,10 @@ router.post("/users/group", async (req, res) => {
             newTek: user[i].newTek,
             training: user[i].training,
             schedule: user[i].schedule,
-            hired: user[i].hired
+            hired: user[i].hired,
+            backgroundCheck: user[i].backgroundCheck,
+            travelWillingness: user[i].travelWillingness,
+            rate: user[i].rate,
           });
 
           if (user[i].whenIWork == "TRUE") {
@@ -118,6 +121,16 @@ router.post("/users/group", async (req, res) => {
             nuser["newTek"] = true;
           } else {
             nuser["newTek"] = false;
+          }
+          if (user[i].backgroundCheck == "TRUE") {
+            nuser["backgroundCheck"] = true;
+          } else {
+            nuser["backgroundCheck"] = false;
+          }
+          if (user[i].travelWillingness == "TRUE") {
+            nuser["travelWillingness"] = true;
+          } else {
+            nuser["travelWillingness"] = false;
           }
           if (user[i].training == "TRUE") {
             nuser["training"] = true;
@@ -158,6 +171,42 @@ router.post("/users/group", async (req, res) => {
 router.get("/users", async (req, res) => {
   data = await User.find({});
   res.json({ data: data });
+});
+
+router.post("/users/update/booleans", async (req, res) => {
+  const body = req.body;
+  const employeeExisist = await User.findOne({ _id: body._id });
+  
+  // Clear DB
+  //const rem = await User.deleteMany({})
+
+
+  if (!employeeExisist) {
+    res.json({
+      status: 500, // Need to find correct code
+      response: `Server Error.`,
+    });
+  } else {
+    try {
+      toChange = body.toChange;
+      newStatus = body.status
+      id = body._id;
+
+      const update = await employeeExisist.updateOne({ [toChange]: newStatus })
+
+      res.json({
+        status: 200, // Need to find correct code
+        response: `Successfully updated.`,
+      });
+    } catch (err) {
+      console.log(err);
+      res.json({
+        status: 500, // Need to find correct code
+        response: `Server Error.`,
+      });
+
+    }
+  }
 });
 
 module.exports = router;
