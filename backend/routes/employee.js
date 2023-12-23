@@ -209,4 +209,12 @@ router.post("/users/update/booleans", async (req, res) => {
   }
 });
 
+
+router.post("/users/findone", async (req, res) => {
+  const body = req.body
+  data = await User.findOne({_id:body._id})
+  console.log(data)
+  res.json({ status: 200, data: data });
+});
+
 module.exports = router;
