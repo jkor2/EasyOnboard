@@ -30,11 +30,11 @@ function QuickUpdate() {
         return (
           <tr>
             <td style={{ minWidth: "150px" }}>{curr.fname} {curr.lname}</td>
-            <td style={{ minWidth: "150px" }}>{RenderStatusButton(curr.hired, "hired")}</td>
-            <td style={{ minWidth: "150px" }}>{RenderStatusButton(curr.training, "training")}</td>
-            <td style={{ minWidth: "150px" }}>{RenderStatusButton(curr.schedule, "schedule")}</td>
-            <td style={{ minWidth: "150px" }}>{RenderStatusButton(curr.whenIWork, "whenIWork")}</td>
-            <td style={{ minWidth: "150px" }}>{RenderStatusButton(curr.newTek, "newTek")}</td>
+            <td style={{ minWidth: "150px" }}>{RenderStatusButton(curr.hired, "hired", curr._id)}</td>
+            <td style={{ minWidth: "150px" }}>{RenderStatusButton(curr.training, "training", curr._id)}</td>
+            <td style={{ minWidth: "150px" }}>{RenderStatusButton(curr.schedule, "schedule", curr._id)}</td>
+            <td style={{ minWidth: "150px" }}>{RenderStatusButton(curr.whenIWork, "whenIWork", curr._id)}</td>
+            <td style={{ minWidth: "150px" }}>{RenderStatusButton(curr.newTek, "newTek", curr._id)}</td>
             <td style={{ minWidth: "150px" }}>{curr.sDate}</td>
             <td style={{ minWidth: "150px" }}>{curr.eDate}</td>
           </tr>

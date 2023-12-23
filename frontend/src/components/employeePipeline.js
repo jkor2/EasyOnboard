@@ -37,9 +37,9 @@ function EmployeePipeline() {
           <td style={{ minWidth: "150px" }}>{curr.email}</td>
           <td style={{ minWidth: "150px" }}>{curr.phone_number}</td>
           <td style={{ minWidth: "150px" }}>{curr.position}</td>
-          <td style={{ minWidth: "150px" }}>{RenderStatusButton(curr.hired, "hired")}</td>
-          <td style={{ minWidth: "150px" }}>{RenderStatusButton(curr.interviewFirst, "interviewFirst")}</td>
-          <td style={{ minWidth: "150px" }}>{RenderStatusButton(curr.interviewSecond, "interviewSecond")}</td>
+          <td style={{ minWidth: "150px" }}>{RenderStatusButton(curr.hired, "hired", curr._id)}</td>
+          <td style={{ minWidth: "150px" }}>{RenderStatusButton(curr.interviewFirst, "interviewFirst", curr._id)}</td>
+          <td style={{ minWidth: "150px" }}>{RenderStatusButton(curr.interviewSecond, "interviewSecond", curr._id)}</td>
 
         </tr>
       )}

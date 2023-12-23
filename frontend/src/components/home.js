@@ -36,8 +36,8 @@ function Home() {
             <td style={{ minWidth: "150px" }}>{curr.email}</td>
             <td style={{ minWidth: "150px" }}>{curr.phone_number}</td>
             <td style={{ minWidth: "150px" }}>{curr.position}</td>
-            <td style={{ minWidth: "150px" }}>{RenderStatusButton(curr.training, "training")}</td>
-            <td style={{ minWidth: "150px" }}>{RenderStatusButton(curr.schedule, "schedule")}</td>
+            <td style={{ minWidth: "150px" }}>{RenderStatusButton(curr.training, "training", curr._id)}</td>
+            <td style={{ minWidth: "150px" }}>{RenderStatusButton(curr.schedule, "schedule", curr._id)}</td>
           </tr>
         );
       }
