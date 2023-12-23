@@ -6,7 +6,7 @@ import Home from './components/home'; // Home Page
 import Upload from './components/upload'; // Data Upload
 import EmployeePipeline from './components/employeePipeline';
 import QuickUpdate from './components/fulloverview';
-
+import ProfilePage from './components/personalPage';
 
 function App() {
 
@@ -26,7 +26,7 @@ function App() {
         <Route path="/upload" element={<Upload/>}></Route>
         <Route path="/pipeline" element={<EmployeePipeline/>}></Route>
         <Route path="/updates" element={<QuickUpdate/>}></Route>
-
+        <Route path="/users/edit/employee/:id" element={<ProfilePage/>}></Route>
       </Routes>
     </div>
   );
