@@ -84,13 +84,15 @@ function ProfilePage() {
                 </h2>
               </Col>
             </Row>
-            <Row className="d-flex mt-5">
-              <Col sm>
+            
+                        
+            <Row className=" mt-5">
+              <Col >
                 <h4>Profile Info</h4>
               </Col>
             </Row>
-            <Row className="mt-3">
-              <Col sm>
+            <Row className="mt-3 ">
+              <Col>
                 <h5>First Name</h5>
 
                 <InputGroup className="mb-3">
@@ -108,7 +110,7 @@ function ProfilePage() {
                   </Button>
                 </InputGroup>
               </Col>
-              <Col sm>
+              <Col >
                 <h5>Last Name</h5>
 
                 <InputGroup className="mb-3">
@@ -125,7 +127,7 @@ function ProfilePage() {
                   </Button>
                 </InputGroup>
               </Col>
-              <Col sm>
+              <Col >
                 {" "}
                 <h5>Email</h5>
                 <InputGroup className="mb-3">
@@ -142,7 +144,7 @@ function ProfilePage() {
                   </Button>
                 </InputGroup>
               </Col>
-              <Col sm>
+              <Col >
                 {" "}
                 <h5>Cell Phone</h5>
                 <InputGroup className="mb-3">
@@ -169,6 +171,10 @@ function ProfilePage() {
                 )}{" "}
               </Col>
             </Row>
+
+
+
+
             <Row className="d-flex mt-5 pt-4 bg-light">
               <Col sm>
                 <h4>Applicant Pipeline</h4>

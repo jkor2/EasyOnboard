@@ -33,7 +33,12 @@ function QuickUpdate() {
 
             return (
                 <tr>
-                  <td style={{ minWidth: "150px" }}>{curr.fname} {curr.lname}</td>
+                  <td style={{ minWidth: "150px" }}>
+                    
+                  <a href={"/users/edit/employee/" + curr._id}>{curr.fname}</a> {curr.lname}
+
+                    
+                    </td>
                   <td style={{ minWidth: "150px" }}>{RenderStatusButton(curr.hired, "hired", curr._id)}</td>
                   <td style={{ minWidth: "150px" }}>{RenderStatusButton(curr.training, "training", curr._id)}</td>
                   <td style={{ minWidth: "150px" }}>{RenderStatusButton(curr.schedule, "schedule", curr._id)}</td>

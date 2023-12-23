@@ -31,7 +31,13 @@ function EmployeePipeline() {
         if (!curr.hired){
       return (
         <tr>
-          <td style={{ minWidth: "150px" }}>{curr.fname}</td>
+          <td style={{ minWidth: "150px" }}>
+
+          <a href={"/users/edit/employee/" + curr._id}>{curr.fname}</a>{" "}
+              
+
+
+          </td>
           <td style={{ minWidth: "150px" }}>{curr.lname}</td>
           <td style={{ minWidth: "150px" }}>{curr.location}</td>
           <td style={{ minWidth: "150px" }}>{curr.email}</td>
