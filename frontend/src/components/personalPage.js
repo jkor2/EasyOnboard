@@ -169,12 +169,12 @@ function ProfilePage() {
                 )}{" "}
               </Col>
             </Row>
-            <Row className="d-flex mt-5 bg-light">
+            <Row className="d-flex mt-5 pt-4 bg-light">
               <Col sm>
                 <h4>Applicant Pipeline</h4>
               </Col>
             </Row>
-            <Row className="pb-3 pt-3 bg-light">
+            <Row className="pb-4 pt-3 bg-light">
               <Col sm>
                 <h5>First Interview</h5>{" "}
                 {RenderStatusButton(
