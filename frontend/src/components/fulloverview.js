@@ -26,20 +26,26 @@ function QuickUpdate() {
   }, []);
 
   const renderEmployees = (data) => {
+    
+
     return data.map((curr) => {
-        return (
-          <tr>
-            <td style={{ minWidth: "150px" }}>{curr.fname} {curr.lname}</td>
-            <td style={{ minWidth: "150px" }}>{RenderStatusButton(curr.hired, "hired", curr._id)}</td>
-            <td style={{ minWidth: "150px" }}>{RenderStatusButton(curr.training, "training", curr._id)}</td>
-            <td style={{ minWidth: "150px" }}>{RenderStatusButton(curr.schedule, "schedule", curr._id)}</td>
-            <td style={{ minWidth: "150px" }}>{RenderStatusButton(curr.whenIWork, "whenIWork", curr._id)}</td>
-            <td style={{ minWidth: "150px" }}>{RenderStatusButton(curr.newTek, "newTek", curr._id)}</td>
-            <td style={{ minWidth: "150px" }}>{RenderStatusButton(curr.backgroundCheck, "backgroundCheck", curr._id)}</td>
-            <td style={{ minWidth: "150px" }}>{RenderStatusButton(curr.travelWillingness, "travelWillingness", curr._id)}</td>
-            
-          </tr>
-        );
+        if (curr.hired){
+
+            return (
+                <tr>
+                  <td style={{ minWidth: "150px" }}>{curr.fname} {curr.lname}</td>
+                  <td style={{ minWidth: "150px" }}>{RenderStatusButton(curr.hired, "hired", curr._id)}</td>
+                  <td style={{ minWidth: "150px" }}>{RenderStatusButton(curr.training, "training", curr._id)}</td>
+                  <td style={{ minWidth: "150px" }}>{RenderStatusButton(curr.schedule, "schedule", curr._id)}</td>
+                  <td style={{ minWidth: "150px" }}>{RenderStatusButton(curr.whenIWork, "whenIWork", curr._id)}</td>
+                  <td style={{ minWidth: "150px" }}>{RenderStatusButton(curr.newTek, "newTek", curr._id)}</td>
+                  <td style={{ minWidth: "150px" }}>{RenderStatusButton(curr.backgroundCheck, "backgroundCheck", curr._id)}</td>
+                  <td style={{ minWidth: "150px" }}>{RenderStatusButton(curr.travelWillingness, "travelWillingness", curr._id)}</td>
+                  
+                </tr>
+              );
+
+        }
 
     });
   };
