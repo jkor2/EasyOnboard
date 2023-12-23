@@ -35,8 +35,9 @@ function QuickUpdate() {
             <td style={{ minWidth: "150px" }}>{RenderStatusButton(curr.schedule, "schedule", curr._id)}</td>
             <td style={{ minWidth: "150px" }}>{RenderStatusButton(curr.whenIWork, "whenIWork", curr._id)}</td>
             <td style={{ minWidth: "150px" }}>{RenderStatusButton(curr.newTek, "newTek", curr._id)}</td>
-            <td style={{ minWidth: "150px" }}>{curr.sDate}</td>
-            <td style={{ minWidth: "150px" }}>{curr.eDate}</td>
+            <td style={{ minWidth: "150px" }}>{RenderStatusButton(curr.backgroundCheck, "backgroundCheck", curr._id)}</td>
+            <td style={{ minWidth: "150px" }}>{RenderStatusButton(curr.travelWillingness, "travelWillingness", curr._id)}</td>
+            
           </tr>
         );
 
@@ -47,7 +48,7 @@ function QuickUpdate() {
     <div style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
     {Header(2)}
     <Container fluid className="mb-3">
-      <h1>Employee Overview</h1>
+      <h1>Quick Updates</h1>
     </Container>
 
     <Container fluid>
@@ -61,8 +62,8 @@ function QuickUpdate() {
               <th>Schedule</th>
               <th>WhenIWork</th>
               <th>NewTek</th>
-              <th>Start</th>
-              <th>End</th>
+              <th>Background</th>
+              <th>Travel</th>
             </tr>
           </thead>
           <tbody>{renderEmployees(employeeData.data)}</tbody>

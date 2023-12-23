@@ -11,6 +11,8 @@ import Alert from "react-bootstrap/Alert";
 import Footer from "./reuse/footer";
 import Papa from "papaparse";
 import Table from "react-bootstrap/Table";
+import Spinner from 'react-bootstrap/Spinner';
+
 
 function Upload() {
   /**
@@ -116,11 +118,14 @@ function Upload() {
         "true",
         "false",
         "false",
+        "25",	
+        "false",
+        "false"
       ],
     ];
 
     let csv =
-      "fname,lname,location,position,email,phone_number,whenIWork,newTek,training,schedule,hired\n";
+      "fname,lname,location,position,email,phone_number,whenIWork,newTek,training,schedule,hired,rate,backgroundCheck,travelWillingness\n";
 
     csvFileData.forEach(function (row) {
       csv += row.join(",");
@@ -159,6 +164,10 @@ function Upload() {
           <td style={{ minWidth: "150px" }}>{curr.email}</td>
           <td style={{ minWidth: "150px" }}>{curr.phone_number}</td>
           <td style={{ minWidth: "150px" }}>{curr.position}</td>
+          <td style={{ minWidth: "150px" }}>{curr.rate}</td>
+          <td style={{ minWidth: "150px" }}>{curr.hired}</td>
+
+
         </tr>
       );
     });
@@ -168,8 +177,13 @@ function Upload() {
     window.location.reload();
   };
 
+  const [spinnerStatus, setSpinnerStatus] = React.useState(false)
+
+
   const handleUploadSuccess = (event) => {
     event.preventDefault();
+    setSpinnerStatus(true)
+
     fetch("/api/users/group", {
       method: "POST",
       headers: {
@@ -181,8 +195,10 @@ function Upload() {
       .then((res) => {
         if (res.status === 200) {
           console.log(res.response);
+          setResStatus(false)
           setTimeout(window.location.reload(), 10000);
         } else {
+          setResStatus(false)
           alert("Account already exists!");
         }
       });
@@ -442,8 +458,8 @@ function Upload() {
         </div>
 
         {csvUploadData ? (
-          <Container>
-            <Table responsive className=" bg-dark width-50">
+          <Container fluid>
+            <Table responsive className=" bg-dark width-70">
               <thead>
                 <tr>
                   <th>First</th>
@@ -452,6 +468,10 @@ function Upload() {
                   <th>Email</th>
                   <th>Cell</th>
                   <th>Postion</th>
+                  <th>Rate</th>
+                  <th>Hired</th>
+
+
                 </tr>
               </thead>
               <tbody>{renderUploadedCSVData()}</tbody>
@@ -464,6 +484,7 @@ function Upload() {
               <Button variant="success btn-lg" onClick={handleUploadSuccess}>
                 Upload to DB
               </Button>
+              {spinnerStatus ? <Spinner animation="border" variant="info" /> : ""}
             </Container>
           </Container>
         ) : (
