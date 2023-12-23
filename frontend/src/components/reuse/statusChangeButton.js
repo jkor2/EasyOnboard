@@ -11,13 +11,13 @@ function RenderStatusButton(status, toUpdate) {
     <>
         <Dropdown>
         <Dropdown.Toggle variant={status ? "success" : "danger"} id="dropdown-basic">
-          {status ? "Complete" : "Incomplete"}
+          {status ? "Yes" : "No"}
         </Dropdown.Toggle>
   
         <Dropdown.Menu>
-        {status ? <Dropdown.Item onClick={() => console.log(toUpdate, "False")}>Incomplete</Dropdown.Item>
+        {status ? <Dropdown.Item onClick={() => console.log(toUpdate, "False")}>No</Dropdown.Item>
           :
-          <Dropdown.Item  onClick={() => console.log(toUpdate, "True")}>Complete</Dropdown.Item>          
+          <Dropdown.Item  onClick={() => console.log(toUpdate, "True")}>Yes</Dropdown.Item>          
           }
         </Dropdown.Menu>
       </Dropdown>

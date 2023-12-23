@@ -5,6 +5,8 @@ import { Routes, Route } from 'react-router-dom';
 import Home from './components/home'; // Home Page 
 import Upload from './components/upload'; // Data Upload
 import EmployeePipeline from './components/employeePipeline';
+import QuickUpdate from './components/fulloverview';
+
 
 function App() {
 
@@ -23,6 +25,7 @@ function App() {
         <Route index element={<Home/>}/>
         <Route path="/upload" element={<Upload/>}></Route>
         <Route path="/pipeline" element={<EmployeePipeline/>}></Route>
+        <Route path="/updates" element={<QuickUpdate/>}></Route>
 
       </Routes>
     </div>

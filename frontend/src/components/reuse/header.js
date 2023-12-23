@@ -45,8 +45,8 @@ function Header(location) {
                 <Nav.Link href="/" className={location == 1 ? "text-dark border-bottom border-dark rounded pd-2" : "text-light"}>
                   Overview
                 </Nav.Link>
-                <Nav.Link href="#action2" className="text-light">
-                  Full Breakdown
+                <Nav.Link href="/updates" className={location == 2 ? "text-dark border-bottom border-dark rounded pd-2" : "text-light"}>
+                  Quick Updates
                 </Nav.Link>
                 <Nav.Link href="#action2" className="text-light">
                   Quick Contacts
