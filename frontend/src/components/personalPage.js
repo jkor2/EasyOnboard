@@ -73,25 +73,26 @@ function ProfilePage() {
           <span>
             {" "}
             <Row>
-              <Col sm={8}>
+              <Row sm={8}>
                 <h1>
                   {employeeData.fname} {employeeData.lname}
                 </h1>
-              </Col>
-              <Col sm={4}>
+              </Row>
+              <Row sm={4}>
                 <h2>
                   {employeeData.hired ? "Current Employee" : "Not Employee"}
                 </h2>
-              </Col>
+              </Row>
             </Row>
             <Row className=" mt-5">
-              <Col>
+              <Row>
                 <h4>Profile Info</h4>
-              </Col>
+              </Row>
             </Row>
             <Row className="mt-3 ">
-              <Col>
-                <h5>First Name</h5>
+              <Row>
+                <Col sm>
+                <h5>First</h5>
 
                 <InputGroup className="mb-3">
                   <Form.Control
@@ -107,9 +108,10 @@ function ProfilePage() {
                     Submit
                   </Button>
                 </InputGroup>
-              </Col>
-              <Col>
-                <h5>Last Name</h5>
+                </Col>
+              
+              <Col sm>
+                <h5>Last</h5>
 
                 <InputGroup className="mb-3">
                   <Form.Control
@@ -124,8 +126,26 @@ function ProfilePage() {
                     Submit
                   </Button>
                 </InputGroup>
-              </Col>
-              <Col>
+                </Col>
+                </Row>
+              <Row>
+              <Col sm>
+                <h5>Cell</h5>
+                <InputGroup className="mb-3">
+                  <Form.Control
+                    placeholder={employeeData.phone_number}
+                    defaultValue={employeeData.phone_number}
+                    onChange={handleInputChange}
+                    aria-label="Recipient's username"
+                    aria-describedby="basic-addon2"
+                    className="bg-light"
+                  />
+                  <Button variant="outline-success" id="button-addon2">
+                    Submit
+                  </Button>
+                </InputGroup>
+                </Col>
+              <Col sm>
                 {" "}
                 <h5>Email</h5>
                 <InputGroup className="mb-3">
@@ -142,13 +162,15 @@ function ProfilePage() {
                   </Button>
                 </InputGroup>
               </Col>
-              <Col>
+              </Row>
+              <Row >
                 {" "}
-                <h5>Cell Phone</h5>
+                <Col sm>
+                <h5>Credit Hours</h5>
                 <InputGroup className="mb-3">
                   <Form.Control
-                    placeholder={employeeData.phone_number}
-                    defaultValue={employeeData.phone_number}
+                    placeholder={0}
+                    defaultValue={0}
                     onChange={handleInputChange}
                     aria-label="Recipient's username"
                     aria-describedby="basic-addon2"
@@ -158,7 +180,7 @@ function ProfilePage() {
                     Submit
                   </Button>
                 </InputGroup>
-              </Col>
+                </Col>
               <Col sm>
                 {" "}
                 <h5>Background Check</h5>{" "}
@@ -168,6 +190,8 @@ function ProfilePage() {
                   employeeData._id
                 )}{" "}
               </Col>
+              </Row>
+
             </Row>
             <Row className="d-flex mt-5 pt-4 bg-light">
               <Col sm>
