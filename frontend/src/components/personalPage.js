@@ -22,6 +22,8 @@ function ProfilePage() {
     lname: "",
     email: "",
     phone_number: "",
+    notes:"",
+    credit_hours: ""
   });
   console.log(formData);
 
@@ -60,7 +62,6 @@ function ProfilePage() {
     });
   };
 
-  console.log(employeeData);
 
   return (
     <div
@@ -92,106 +93,109 @@ function ProfilePage() {
             <Row className="mt-3 ">
               <Row>
                 <Col sm>
-                <h5>First</h5>
+                  <h5>First</h5>
 
-                <InputGroup className="mb-3">
-                  <Form.Control
-                    name="fname"
-                    placeholder={employeeData.fname}
-                    defaultValue={employeeData.fname}
-                    onChange={handleInputChange}
-                    aria-label="Recipient's username"
-                    aria-describedby="basic-addon2"
-                    className="bg-light"
-                  />
-                  <Button variant="outline-success" id="button-addon2">
-                    Submit
-                  </Button>
-                </InputGroup>
+                  <InputGroup className="mb-3">
+                    <Form.Control
+                      name="fname"
+                      placeholder={employeeData.fname}
+                      defaultValue={employeeData.fname}
+                      onChange={handleInputChange}
+                      aria-label="Recipient's username"
+                      aria-describedby="basic-addon2"
+                      className="bg-light"
+                    />
+                    <Button variant="outline-success" id="button-addon2">
+                      Submit
+                    </Button>
+                  </InputGroup>
                 </Col>
-              
-              <Col sm>
-                <h5>Last</h5>
 
-                <InputGroup className="mb-3">
-                  <Form.Control
-                    placeholder={employeeData.lname}
-                    defaultValue={employeeData.lname}
-                    onChange={handleInputChange}
-                    aria-label="Recipient's username"
-                    aria-describedby="basic-addon2"
-                    className="bg-light"
-                  />
-                  <Button variant="outline-success" id="button-addon2">
-                    Submit
-                  </Button>
-                </InputGroup>
+                <Col sm>
+                  <h5>Last</h5>
+
+                  <InputGroup className="mb-3">
+                    <Form.Control
+                        name="lname"
+                      placeholder={employeeData.lname}
+                      defaultValue={employeeData.lname}
+                      onChange={handleInputChange}
+                      aria-label="Recipient's username"
+                      aria-describedby="basic-addon2"
+                      className="bg-light"
+                    />
+                    <Button variant="outline-success" id="button-addon2">
+                      Submit
+                    </Button>
+                  </InputGroup>
                 </Col>
-                </Row>
-              <Row>
-              <Col sm>
-                <h5>Cell</h5>
-                <InputGroup className="mb-3">
-                  <Form.Control
-                    placeholder={employeeData.phone_number}
-                    defaultValue={employeeData.phone_number}
-                    onChange={handleInputChange}
-                    aria-label="Recipient's username"
-                    aria-describedby="basic-addon2"
-                    className="bg-light"
-                  />
-                  <Button variant="outline-success" id="button-addon2">
-                    Submit
-                  </Button>
-                </InputGroup>
-                </Col>
-              <Col sm>
-                {" "}
-                <h5>Email</h5>
-                <InputGroup className="mb-3">
-                  <Form.Control
-                    placeholder={employeeData.email}
-                    defaultValue={employeeData.email}
-                    onChange={handleInputChange}
-                    aria-label="Recipient's username"
-                    aria-describedby="basic-addon2"
-                    className="bg-light"
-                  />
-                  <Button variant="outline-success" id="button-addon2">
-                    Submit
-                  </Button>
-                </InputGroup>
-              </Col>
               </Row>
-              <Row >
+              <Row>
+                <Col sm>
+                  <h5>Cell</h5>
+                  <InputGroup className="mb-3">
+                    <Form.Control
+                    name="phone_number"
+                      placeholder={employeeData.phone_number}
+                      defaultValue={employeeData.phone_number}
+                      onChange={handleInputChange}
+                      aria-label="Recipient's username"
+                      aria-describedby="basic-addon2"
+                      className="bg-light"
+                    />
+                    <Button variant="outline-success" id="button-addon2">
+                      Submit
+                    </Button>
+                  </InputGroup>
+                </Col>
+                <Col sm>
+                  {" "}
+                  <h5>Email</h5>
+                  <InputGroup className="mb-3">
+                    <Form.Control
+                    name="email"
+                      placeholder={employeeData.email}
+                      defaultValue={employeeData.email}
+                      onChange={handleInputChange}
+                      aria-label="Recipient's username"
+                      aria-describedby="basic-addon2"
+                      className="bg-light"
+                    />
+                    <Button variant="outline-success" id="button-addon2">
+                      Submit
+                    </Button>
+                  </InputGroup>
+                </Col>
+              </Row>
+              <Row>
                 {" "}
                 <Col sm>
-                <h5>Credit Hours</h5>
-                <InputGroup className="mb-3">
-                  <Form.Control
-                    placeholder={0}
-                    defaultValue={0}
-                    onChange={handleInputChange}
-                    aria-label="Recipient's username"
-                    aria-describedby="basic-addon2"
-                    className="bg-light"
-                  />
-                  <Button variant="outline-success" id="button-addon2">
-                    Submit
-                  </Button>
-                </InputGroup>
+                  <h5>Credit Hours</h5>
+                  <InputGroup className="mb-3">
+                    <Form.Control
+                    name="credit_hours"
+                      placeholder={0}
+                      defaultValue={0}
+                      onChange={handleInputChange}
+                      aria-label="Recipient's username"
+                      aria-describedby="basic-addon2"
+                      className="bg-light"
+                    />
+                    <Button variant="outline-success" id="button-addon2">
+                      Submit
+                    </Button>
+                  </InputGroup>
                 </Col>
-              <Col sm>
-                {" "}
-                <h5>Background Check</h5>{" "}
-                {RenderStatusButton(
-                  employeeData.backgroundCheck,
-                  "backgroundCheck",
-                  employeeData._id
-                )}{" "}
-              </Col>
+                <Col sm>
+                  {" "}
+                  <h5>Background Check</h5>{" "}
+                  {RenderStatusButton(
+                    employeeData.backgroundCheck,
+                    "backgroundCheck",
+                    employeeData._id
+                  )}{" "}
+                </Col>
               </Row>
-
             </Row>
             <Row className="d-flex mt-5 pt-4 bg-light">
               <Col sm>
@@ -273,6 +277,30 @@ function ProfilePage() {
                   "backgroundCheck",
                   employeeData._id
                 )}{" "}
+              </Col>
+            </Row>
+            <Row className="mt-5 mb-3 ">
+              {" "}
+              <Col sm>
+                <h5>Notes</h5>
+                <Form.Group
+                  className="mb-3"
+                  controlId="exampleForm.ControlTextarea1"
+                >
+                  <Form.Control as="textarea" rows={3} 
+                  name="notes"
+                   placeholder={employeeData.notes}
+                   defaultValue={employeeData.notes}
+                   onChange={handleInputChange}
+                   aria-label="Recipient's username"
+                   aria-describedby="basic-addon2"
+                   className="bg-light"
+                  
+                  />
+                </Form.Group>
+                <Button variant="outline-success" id="button-addon2">
+                  Submit
+                </Button>
               </Col>
             </Row>
           </span>
