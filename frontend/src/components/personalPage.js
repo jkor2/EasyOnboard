@@ -188,10 +188,10 @@ function ProfilePage() {
                 </Col>
                 <Col sm>
                   {" "}
-                  <h5>Background Check</h5>{" "}
+                  <h5>Travel</h5>{" "}
                   {RenderStatusButton(
-                    employeeData.backgroundCheck,
-                    "backgroundCheck",
+                    employeeData.travelWillingness,
+                    "travelWillingness",
                     employeeData._id
                   )}{" "}
                 </Col>
