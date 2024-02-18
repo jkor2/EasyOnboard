@@ -67,6 +67,7 @@ function ProfilePage() {
     POST method to API
       - Handles Name, email, cell, credit hours, and notes 
     Render Updates
+    API Route: /users/individual/update
     */
   }
 
