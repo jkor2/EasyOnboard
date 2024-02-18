@@ -205,6 +205,11 @@ function ProfilePage() {
                 </Col>
               </Row>
             </Row>
+            {/**
+             * 
+             * Need to add the employee state location
+             * 
+             */}
             <Row className="d-flex mt-5 pt-4 bg-light">
               <Col sm>
                 <h4>Applicant Pipeline</h4>
