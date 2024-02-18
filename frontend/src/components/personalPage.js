@@ -5,7 +5,7 @@ import React from "react";
 import Container from "react-bootstrap/Container";
 import Header from "./reuse/header";
 import "../App.css";
-import RenderStatusButton from "./reuse/statusChangeButton"; // For changing the status of employee
+import RenderStatusButton from "./reuse/statusChangeButton"; // For button status of employee
 import Footer from "./reuse/footer";
 import Spinner from "react-bootstrap/Spinner";
 import Row from "react-bootstrap/Row";
@@ -49,7 +49,7 @@ function ProfilePage() {
         if (res.status === 200) {
           setEmployeeData(res.data);
         } else {
-          alert("Account already exists!");
+          alert("Server Error");
         }
       });
   }, []);
@@ -61,6 +61,14 @@ function ProfilePage() {
       [name]: value,
     });
   };
+
+  const handelSubmit = () => {
+    /*
+    POST method to API
+      - Handles Name, email, cell, credit hours, and notes 
+    Render Updates
+    */
+  }
 
 
   return (
