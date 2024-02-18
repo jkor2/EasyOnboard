@@ -5,6 +5,14 @@ const User = require("../models/User");
 // @route   POST /api/employee
 // @desc    Create new user
 
+router.post("/users/individual/update", async(req,res) => {
+  /**
+   * Handling updates to the personal page 
+   * Name, email, cell, notes, & location
+   */
+})
+
+
 router.post("/users/individual", async (req, res) => {
   const employeeExisist = await User.findOne({ email: req.body.email });
   const user = req.body;
