@@ -16,7 +16,7 @@ router.post("/users/individual/update", async(req,res) => {
 router.post("/users/individual", async (req, res) => {
   const employeeExisist = await User.findOne({ email: req.body.email });
   const user = req.body;
-  console.log(user);
+  
 
   try {
     if (employeeExisist == null) {
@@ -79,7 +79,6 @@ router.post("/users/group", async (req, res) => {
     for (let i = 0; i < user.length; i++) {
       if (user[i].fname == "") {
         // Skips last row
-        console.log(1, user[i].fname);
         if (
           user[i].lname == "" ||
           user[i].email == "" ||
@@ -87,14 +86,12 @@ router.post("/users/group", async (req, res) => {
           user[i].position == "" ||
           user[i].location == ""
         ) {
-          console.log(2, user[i].fname);
           res.json({
             status: 406, // Need to find correct code
             response: `Hold on a second! Make sure all fields are filled out.`,
           });
           break;
         } else {
-          console.log(3, user[i].fname);
           continue;
         }
       } else {
@@ -102,7 +99,6 @@ router.post("/users/group", async (req, res) => {
           if (user[i].fname == "") {
             continue;
           }
-          console.log(4, user[i].fname);
           const nuser = new User({
             fname: user[i].fname,
             lname: user[i].lname,
@@ -158,7 +154,6 @@ router.post("/users/group", async (req, res) => {
           await nuser.save();
           uploadedUsers.append(user[i].fname);
         } catch (err) {
-          console.log(5, user[i].fname);
           console.log(err);
         }
       }
@@ -221,7 +216,6 @@ router.post("/users/update/booleans", async (req, res) => {
 router.post("/users/findone", async (req, res) => {
   const body = req.body
   data = await User.findOne({_id:body._id})
-  console.log(data)
   res.json({ status: 200, data: data });
 });
 
